@@ -23,14 +23,14 @@ if (!defined('TL_ROOT'))
 /**
  * Frontend filter
  */
- 
+
 // text fields
 $GLOBALS['METAMODELS']['filters']['text'] = array
 (
 	'class' => 'MetaModelFilterSettingText',
 	'attr_filter' => array('text','longtext'),
-	'image' => 'system/modules/metamodels_frontendfilter/html/filter_frontend.png',
-	'info_callback' => array('MetaModelFrontendFilterBackend','infoCallback'),
+	'image' => 'system/modules/metamodels/html/filter_frontend.png',
+	'info_callback' => array('TableMetaModelFilterSetting','infoCallback'),
 );
 
 ?>
