@@ -16,12 +16,9 @@
  */
 
 /**
- * Frontend filter
+ * Register the classes
  */
-$GLOBALS['METAMODELS']['filters']['text'] = array
+ClassLoader::addClasses(array
 (
-	'class' => 'MetaModelFilterSettingText',
-	'attr_filter' => array('text','longtext'),
-	'image' => 'system/modules/metamodelsfilter_text/html/filter_text.png',
-	'info_callback' => array('TableMetaModelFilterSetting','infoCallback'),
-);
+	'MetaModelFilterSettingText'         => 'system/modules/metamodelsfilter_text/MetaModelFilterSettingText.php',
+));
