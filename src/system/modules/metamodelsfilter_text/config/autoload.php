@@ -8,7 +8,7 @@
  *
  * PHP version 5
  * @package    MetaModels
- * @subpackage FilterTags
+ * @subpackage FilterText
  * @author     Christian de la Haye <service@delahaye.de>
  * @copyright  The MetaModels team.
  * @license    LGPL.
