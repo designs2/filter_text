@@ -25,7 +25,7 @@
 class MetaModelFilterSettingText extends MetaModelFilterSetting
 {
 	/**
-	 * {@inheritdoc}
+	 * retrieve the filter param to react on.
 	 */
 	protected function getParamName()
 	{
@@ -77,6 +77,7 @@ class MetaModelFilterSettingText extends MetaModelFilterSetting
 
 		if ($objAttribute && $strParamName && $strParamValue)
 		{
+
 			$objQuery = Database::getInstance()->prepare(sprintf(
 				'SELECT id FROM %s WHERE %s LIKE ?',
 				$this->getMetaModel()->getTableName(),
