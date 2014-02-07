@@ -20,7 +20,6 @@
  */
 $GLOBALS['METAMODELS']['filters']['text']['class'] = 'MetaModelFilterSettingText';
 $GLOBALS['METAMODELS']['filters']['text']['image'] = 'system/modules/metamodelsfilter_text/html/filter_text.png';
-$GLOBALS['METAMODELS']['filters']['text']['info_callback'] = array('TableMetaModelFilterSetting', 'infoCallback');
 $GLOBALS['METAMODELS']['filters']['text']['attr_filter'][] = 'longtext';
 $GLOBALS['METAMODELS']['filters']['text']['attr_filter'][] = 'text';
 $GLOBALS['METAMODELS']['filters']['text']['attr_filter'][] = 'translatedlongtext';
