@@ -15,6 +15,12 @@
  * @filesource
  */
 
+namespace MetaModels\Filter\Setting;
+
+use MetaModels\Filter\IFilter;
+use MetaModels\Filter\Rules\StaticIdList;
+use MetaModels\FrontendIntegration\FrontendFilterOptions;
+
 /**
  * Filter "text field" for FE-filtering, based on filters by the MetaModels team.
  *
@@ -23,21 +29,8 @@
  * @author        Christian de la Haye <service@delahaye.de>
  * @author        Stefan Heimes <stefan_heimes@hotmail.com>
  */
-class MetaModelFilterSettingText extends MetaModelFilterSettingSimpleLookup
+class Text extends SimpleLookup
 {
-
-	/**
-	 * Constructor - initialize the object and store the parameters.
-	 *
-	 * @param IMetaModelFilterSettings $objFilterSetting The parenting filter settings object.
-	 *
-	 * @param array                    $arrData          The attributes for this filter setting.
-	 */
-	public function __construct($objFilterSetting, $arrData)
-	{
-		parent::__construct($objFilterSetting, $arrData);
-	}
-
 	/**
 	 * Overrides the parent implementation to always return true, as this setting is always optional.
 	 *
@@ -59,7 +52,9 @@ class MetaModelFilterSettingText extends MetaModelFilterSettingSimpleLookup
 	}
 
 	/**
-	 * retrieve the filter param to react on.
+	 * Retrieve the filter parameter name to react on.
+	 *
+	 * @return string
 	 */
 	protected function getParamName()
 	{
@@ -73,12 +68,14 @@ class MetaModelFilterSettingText extends MetaModelFilterSettingSimpleLookup
 		{
 			return $objAttribute->getColName();
 		}
+
+		return null;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function prepareRules(IMetaModelFilter $objFilter, $arrFilterUrl)
+	public function prepareRules(IFilter $objFilter, $arrFilterUrl)
 	{
 		$objMetaModel  = $this->getMetaModel();
 		$objAttribute  = $objMetaModel->getAttributeById($this->get('attr_id'));
@@ -86,13 +83,13 @@ class MetaModelFilterSettingText extends MetaModelFilterSettingSimpleLookup
 		$strParamValue = $arrFilterUrl[$strParamName];
 		$strTextsearch = $this->get('textsearch');
 
-		// react on wildcard, overriding the search type
+		// React on wildcard, overriding the search type.
 		if (strpos($strParamValue, '*') !== false)
 		{
 			$strTextsearch = 'exact';
 		}
 
-		// type of search
+		// Type of search.
 		switch ($strTextsearch)
 		{
 			case 'beginswith':
@@ -112,7 +109,7 @@ class MetaModelFilterSettingText extends MetaModelFilterSettingSimpleLookup
 		if ($objAttribute && $strParamName && $strParamValue)
 		{
 
-			$objQuery = Database::getInstance()->prepare(sprintf(
+			$objQuery = \Database::getInstance()->prepare(sprintf(
 				'SELECT id FROM %s WHERE %s LIKE ?',
 				$this->getMetaModel()->getTableName(),
 				$objAttribute->getColName()
@@ -121,11 +118,11 @@ class MetaModelFilterSettingText extends MetaModelFilterSettingSimpleLookup
 
 			$arrIds = $objQuery->fetchEach('id');
 
-			$objFilter->addFilterRule(new MetaModelFilterRuleStaticIdList($arrIds));
+			$objFilter->addFilterRule(new StaticIdList($arrIds));
 			return;
 		}
 
-		$objFilter->addFilterRule(new MetaModelFilterRuleStaticIdList(null));
+		$objFilter->addFilterRule(new StaticIdList(null));
 	}
 
 
@@ -148,16 +145,18 @@ class MetaModelFilterSettingText extends MetaModelFilterSettingSimpleLookup
 				$strParamName => ($this->get('label') ? $this->get('label') : $this->getParamName())
 			);
 		}
-		else
-		{
-			return array();
-		}
+		return array();
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getParameterFilterWidgets($arrIds, $arrFilterUrl, $arrJumpTo, \MetaModelFrontendFilterOptions $objFrontendFilterOptions)
+	public function getParameterFilterWidgets(
+		$arrIds,
+		$arrFilterUrl,
+		$arrJumpTo,
+		FrontendFilterOptions $objFrontendFilterOptions
+	)
 	{
 		// If defined as static, return nothing as not to be manipulated via editors.
 		if (!$this->enableFEFilterWidget())
@@ -187,7 +186,8 @@ class MetaModelFilterSettingText extends MetaModelFilterSettingSimpleLookup
 		);
 
 		// Add filter.
-		$arrReturn[$this->getParamName()] = $this->prepareFrontendFilterWidget($arrWidget, $arrFilterUrl, $arrJumpTo, $objFrontendFilterOptions);
+		$arrReturn[$this->getParamName()] =
+			$this->prepareFrontendFilterWidget($arrWidget, $arrFilterUrl, $arrJumpTo, $objFrontendFilterOptions);
 		return $arrReturn;
 	}
 
