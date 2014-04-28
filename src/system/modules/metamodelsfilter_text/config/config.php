@@ -23,5 +23,5 @@ $GLOBALS['METAMODELS']['filters']['text']['image'] = 'system/modules/metamodelsf
 $GLOBALS['METAMODELS']['filters']['text']['info_callback'] = array('TableMetaModelFilterSetting', 'infoCallback');
 $GLOBALS['METAMODELS']['filters']['text']['attr_filter'][] = 'longtext';
 $GLOBALS['METAMODELS']['filters']['text']['attr_filter'][] = 'text';
-$GLOBALS['METAMODELS']['filters']['text']['attr_filter'][] = 'translatedlongtext';
-$GLOBALS['METAMODELS']['filters']['text']['attr_filter'][] = 'translatedtext';
+//$GLOBALS['METAMODELS']['filters']['text']['attr_filter'][] = 'translatedlongtext';
+//$GLOBALS['METAMODELS']['filters']['text']['attr_filter'][] = 'translatedtext';
