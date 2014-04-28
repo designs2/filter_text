@@ -20,5 +20,5 @@
  */
 ClassLoader::addClasses(array
 (
-	'MetaModelFilterSettingText'         => 'system/modules/metamodelsfilter_text/MetaModelFilterSettingText.php',
+	'MetaModels\Filter\Setting\Text' => 'system/modules/metamodelsfilter_text/MetaModels/Filter/Setting/Text.php',
 ));
