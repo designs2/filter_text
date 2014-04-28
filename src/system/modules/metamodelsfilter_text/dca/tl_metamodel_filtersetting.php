@@ -15,18 +15,11 @@
  * @filesource
  */
 
-/**
- * palettes
- */
 $GLOBALS['TL_DCA']['tl_metamodel_filtersetting']['metapalettes']['text extends default'] = array
 (
 	'+config' => array('attr_id', 'urlparam', 'label', 'template', 'textsearch'),
 );
 
-
-/**
- * fields
- */
 $GLOBALS['TL_DCA']['tl_metamodel_filtersetting']['fields']['textsearch'] = array
 (
 	'label'                   => &$GLOBALS['TL_LANG']['tl_metamodel_filtersetting']['textsearch'],
@@ -34,5 +27,5 @@ $GLOBALS['TL_DCA']['tl_metamodel_filtersetting']['fields']['textsearch'] = array
 	'inputType'               => 'select',
 	'options'                 => array('exact','beginswith','endswith'),
 	'reference'               => $GLOBALS['TL_LANG']['tl_metamodel_filtersetting']['references'],
-	'eval'                    => array('tl_class'=>'w50', 'includeBlankOption'=>true)
+	'eval'                    => array('tl_class' => 'w50', 'includeBlankOption' => true)
 );

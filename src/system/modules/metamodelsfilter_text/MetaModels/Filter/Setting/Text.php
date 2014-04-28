@@ -171,7 +171,6 @@ class Text extends SimpleLookup
 		$arrCount  = array();
 		$arrWidget = array(
 			'label'     => array(
-				// TODO: make this multilingual.
 				($this->get('label') ? $this->get('label') : $this->getParamName()),
 				'GET: ' . $this->getParamName()
 			),
