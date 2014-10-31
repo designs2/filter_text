@@ -212,14 +212,14 @@ class Text extends SimpleLookup
     /**
      * Add Param to global filter params array.
      *
-     * @param string $param Name of filter param.
+     * @param string $strParam Name of filter param.
      *
      * @return void
      *
      * @SuppressWarnings(PHPMD.Superglobals)
      */
-    private function addFilterParam($param)
+    private function addFilterParam($strParam)
     {
-        $GLOBALS['MM_FILTER_PARAMS'][] = $param;
+        $GLOBALS['MM_FILTER_PARAMS'][] = $strParam;
     }
 }
