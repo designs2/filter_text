@@ -54,7 +54,7 @@
 	},
 	"autoload": {
 		"psr-0": {
-			"MetaModels": "src/system/modules/metamodelsfilter_text"
+			"MetaModels": "src"
 		}
 	},
 	"extra":{
