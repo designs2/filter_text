@@ -59,8 +59,8 @@
 	},
 	"extra":{
 		"contao": {
-			"symlinks":{
-				"src/system/modules/metamodelsfilter_text":"system/modules/metamodelsfilter_text"
+			"sources":{
+				"contao":"system/modules/metamodelsfilter_text"
 			},
 			"transifex": {
 				"project": "metamodels",
