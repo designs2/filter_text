@@ -189,24 +189,7 @@ class Text extends SimpleLookup
      */
     public function getParameterDCA()
     {
-        $objAttribute = $this->getMetaModel()->getAttributeById($this->get('attr_id'));
-
-        $arrLabel = array(
-            ($this->get('label') ? $this->get('label') : $objAttribute->getName()),
-            'GET: ' . $this->get('urlparam')
-        );
-
-        return array(
-            $this->getParamName() => array
-            (
-                'label'     => $arrLabel,
-                'inputType' => 'text',
-                'eval'      => array(
-                    'urlparam' => $this->get('urlparam'),
-                    'template' => $this->get('template')
-                )
-            )
-        );
+        return array();
     }
 
     /**
