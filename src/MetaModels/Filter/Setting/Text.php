@@ -200,6 +200,7 @@ class Text extends SimpleLookup
      * @return void
      *
      * @SuppressWarnings(PHPMD.Superglobals)
+     * @SuppressWarnings(PHPMD.CamelCaseVariableName)
      */
     private function addFilterParam($strParam)
     {
