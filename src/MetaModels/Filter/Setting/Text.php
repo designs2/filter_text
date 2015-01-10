@@ -18,6 +18,7 @@
 namespace MetaModels\Filter\Setting;
 
 use MetaModels\Filter\IFilter;
+use MetaModels\Filter\Rules\SearchAttribute;
 use MetaModels\Filter\Rules\StaticIdList;
 use MetaModels\FrontendIntegration\FrontendFilterOptions;
 
@@ -104,17 +105,7 @@ class Text extends SimpleLookup
 
         if ($objAttribute && $strParamName && $strParamValue) {
 
-            $objQuery = \Database::getInstance()->prepare(sprintf(
-                'SELECT id FROM %s WHERE %s LIKE ?',
-                $this->getMetaModel()->getTableName(),
-                $objAttribute->getColName()
-            ))
-                ->execute(str_replace(array('*', '?'), array('%', '_'), $strWhat));
-
-            $arrIds = $objQuery->fetchEach('id');
-
-            $objFilter->addFilterRule(new StaticIdList($arrIds));
-
+            $objFilter->addFilterRule(new SearchAttribute($objAttribute, $strWhat));
             return;
         }
 
