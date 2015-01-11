@@ -18,7 +18,7 @@
 namespace MetaModels\Filter\Setting;
 
 /**
- * Attribute type factory for select filter settings.
+ * Attribute type factory for text filter settings.
  */
 class TextFilterSettingTypeFactory extends AbstractFilterSettingTypeFactory
 {
