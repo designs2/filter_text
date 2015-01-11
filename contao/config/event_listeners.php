@@ -8,7 +8,7 @@
  * PHP version 5
  *
  * @package MetaModels
- * @subpackage FilterSelect
+ * @subpackage FilterText
  * @author Christopher Boelter <christopher@boelter.eu>
  * @copyright The MetaModels team.
  * @license LGPL.
