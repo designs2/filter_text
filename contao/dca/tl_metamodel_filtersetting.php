@@ -13,6 +13,7 @@
  * @author     Andreas Isaak <info@andreas-isaak.de>
  * @author 	   Christian Schiffler <c.schiffler@cyberspectrum.de>
  * @author	   David Molineus <mail@netzmacht.de>
+ * @author     Christopher Boelter <christopher@boelter.eu>
  * @copyright  The MetaModels team.
  * @license    LGPL.
  * @filesource
