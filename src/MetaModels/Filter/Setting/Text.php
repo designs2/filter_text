@@ -7,17 +7,25 @@
  * data in each collection.
  *
  * PHP version 5
- * @package    MetaModels
- * @subpackage FilterText
- * @author     Christian de la Haye <service@delahaye.de>
- * @copyright  The MetaModels team.
- * @license    LGPL.
+ *
+ * @package      MetaModels
+ * @subpackage   FilterText
+ * @author       Christian de la Haye <service@delahaye.de>
+ * @author       Andreas Isaak <info@andreas-isaak.de>
+ * @author       Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author       David Molineus <mail@netzmacht.de>
+ * @author       David Maack <david.maack@arcor.de>
+ * @author       Stefan Heimes <stefan_heimes@hotmail.com>
+ * @author       Christopher Boelter <christopher@boelter.eu>
+ * @copyright    The MetaModels team.
+ * @license      LGPL.
  * @filesource
  */
 
 namespace MetaModels\Filter\Setting;
 
 use MetaModels\Filter\IFilter;
+use MetaModels\Filter\Rules\SearchAttribute;
 use MetaModels\Filter\Rules\StaticIdList;
 use MetaModels\FrontendIntegration\FrontendFilterOptions;
 
@@ -104,17 +112,7 @@ class Text extends SimpleLookup
 
         if ($objAttribute && $strParamName && $strParamValue) {
 
-            $objQuery = \Database::getInstance()->prepare(sprintf(
-                'SELECT id FROM %s WHERE %s LIKE ?',
-                $this->getMetaModel()->getTableName(),
-                $objAttribute->getColName()
-            ))
-                ->execute(str_replace(array('*', '?'), array('%', '_'), $strWhat));
-
-            $arrIds = $objQuery->fetchEach('id');
-
-            $objFilter->addFilterRule(new StaticIdList($arrIds));
-
+            $objFilter->addFilterRule(new SearchAttribute($objAttribute, $strWhat));
             return;
         }
 
@@ -189,24 +187,7 @@ class Text extends SimpleLookup
      */
     public function getParameterDCA()
     {
-        $objAttribute = $this->getMetaModel()->getAttributeById($this->get('attr_id'));
-
-        $arrLabel = array(
-            ($this->get('label') ? $this->get('label') : $objAttribute->getName()),
-            'GET: ' . $this->get('urlparam')
-        );
-
-        return array(
-            $this->getParamName() => array
-            (
-                'label'     => $arrLabel,
-                'inputType' => 'text',
-                'eval'      => array(
-                    'urlparam' => $this->get('urlparam'),
-                    'template' => $this->get('template')
-                )
-            )
-        );
+        return array();
     }
 
     /**
@@ -217,6 +198,7 @@ class Text extends SimpleLookup
      * @return void
      *
      * @SuppressWarnings(PHPMD.Superglobals)
+     * @SuppressWarnings(PHPMD.CamelCaseVariableName)
      */
     private function addFilterParam($strParam)
     {
