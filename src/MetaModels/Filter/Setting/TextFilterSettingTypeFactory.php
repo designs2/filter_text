@@ -35,11 +35,11 @@ class TextFilterSettingTypeFactory extends AbstractFilterSettingTypeFactory
             ->setTypeIcon('system/modules/metamodelsfilter_text/html/filter_text.png')
             ->setTypeClass('MetaModels\Filter\Setting\Text')
             ->allowAttributeTypes(
-				'longtext',
-				'text',
-				'translatedtext',
-				'translatedlongtext',
-				'combinedvalues'
-			);
+                'longtext',
+                'text',
+                'translatedtext',
+                'translatedlongtext',
+                'combinedvalues'
+            );
     }
 }
