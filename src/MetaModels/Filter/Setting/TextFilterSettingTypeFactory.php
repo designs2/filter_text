@@ -10,6 +10,7 @@
  * @package    MetaModels
  * @subpackage FilterText
  * @author     Christopher Boelter <christopher@boelter.eu>
+ * @author     Marc Reimann <reimann@mediendepot-ruhr.de>
  * @copyright  The MetaModels team.
  * @license    LGPL.
  * @filesource
@@ -33,15 +34,12 @@ class TextFilterSettingTypeFactory extends AbstractFilterSettingTypeFactory
             ->setTypeName('text')
             ->setTypeIcon('system/modules/metamodelsfilter_text/html/filter_text.png')
             ->setTypeClass('MetaModels\Filter\Setting\Text')
-            ->allowAttributeTypes();
-
-        foreach (array(
-                     'longtext',
-                     'text',
-                     'translatedtext',
-                     'translatedlongtext',
-                 ) as $attribute) {
-            $this->addKnownAttributeType($attribute);
-        }
+            ->allowAttributeTypes(
+				'longtext',
+				'text',
+				'translatedtext',
+				'translatedlongtext',
+				'combinedvalues'
+			);
     }
 }
