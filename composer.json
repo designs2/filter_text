@@ -1,5 +1,5 @@
 {
-  "name": "metamodels/filter_text",
+  "name": "designs2/filter_text",
   "description": "MetaModels text filter",
   "keywords": [
     "contao",
@@ -33,8 +33,8 @@
   "require": {
     "php": ">=5.3",
     "contao/core": ">=3.2,<3.6",
-    "contao-community-alliance/composer-plugin": "~2.0",
-    "metamodels/core": "~2.0"
+    "contao-community-alliance/composer-plugin": "*",
+    "metamodels/core": "*"
   },
   "require-dev": {
     "cyberspectrum/contao-toolbox": "~0.6",
